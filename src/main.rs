@@ -1,9 +1,8 @@
 use dioxus::prelude::*;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
-const MAIN_CSS: Asset = asset!("/assets/main.css");
-const HEADER_SVG: Asset = asset!("/assets/header.svg");
-const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
+static CSS: Asset = asset!("/assets/main.css");
+static MOMO_FONT: Asset = asset!("/assets/MomoTrustDisplay-Regular.ttf");
+static LILITA_FONT: Asset = asset!("/assets/LilitaOne-Regular.ttf");
 
 fn main() {
     dioxus::launch(App);
@@ -12,26 +11,83 @@ fn main() {
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "stylesheet", href: MAIN_CSS } document::Link { rel: "stylesheet", href: TAILWIND_CSS }
-        Hero {}
+        document::Stylesheet { href: CSS }
+        LoadFonts {  }
+
+        Header {  }
+        NamesApp {  }
+        Buttons {  }
+    }
+}
+
+#[component]
+fn FontFace(family: &'static str, style: &'static str, weight: usize, asset: Asset) -> Element {
+    rsx! {
+        document::Style {{
+            format!("
+                @font-face {{
+                    font-display: swap;
+                    font-family: '{}';
+                    font-style: {};
+                    font-weight: {};
+                    src: url('{}') format('woff2');
+                }}
+                ", family, style, weight, asset
+            )
+        }}
+    }
+}
+
+#[component]
+fn LoadFonts() -> Element {
+    rsx! {
+        FontFace {
+            family: "Momo Trust Display",
+            style: "normal",
+            weight: 400,
+            asset: MOMO_FONT
+        }
+        FontFace {
+            family: "Lilita One",
+            style: "normal",
+            weight: 400,
+            asset: LILITA_FONT
+        }
+    }
+}
+
+#[component]
+fn Header() -> Element {
+    rsx! {
+        div { id: "title_div",
+            h1 { id: "title",
+                "V_inder"
+            }
+        }
+    }
+}
+
+#[component]
+fn NamesApp() -> Element {
+    rsx! {
+        div { id: "image",
+            img { id: "central_image",
+                src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2024%2F08%2F16%2F11%2F47%2Fai-generated-8973514_1280.jpg",
+            }
+        }
 
     }
 }
 
 #[component]
-pub fn Hero() -> Element {
+fn Buttons() -> Element {
     rsx! {
-        div {
-            id: "hero",
-            img { src: HEADER_SVG, id: "header" }
-            div { id: "links",
-                a { href: "https://dioxuslabs.com/learn/0.7/", "📚 Learn Dioxus" }
-                a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-                a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-                a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-                a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-                a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
+        div { id: "buttons",
+            button { id: "bad_button",
+                "Bad!"
+            }
+            button { id:"good_button",
+                "Good!"
             }
         }
     }
