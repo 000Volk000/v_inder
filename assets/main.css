@@ -64,16 +64,33 @@ body {
   font-family: "Space Mono Regular";
   font-size: 1.5em;
   box-shadow: 0px 0px 15px rgba(229, 233, 244, 0.25);
+  transition: all 0.3s ease;
+  border: 0;
+}
+
+#buttons button:active {
+  transform: translateY(5px);
+  transition: 200ms;
 }
 
 #good_button {
-  background-color: #a09adf;
+  background-color: #b1c2df;
+  color: #1c1e2e;
   margin-right: 5vh;
   margin-left: 1vh;
 }
 
+#good_button:active {
+  box-shadow: 0px 0px 10px rgba(46, 201, 70, 0.75);
+}
+
 #bad_button {
-  background-color: #d2d3f3;
+  background-color: #3e4466;
+  color: #b1c2df;
   margin-right: 1vh;
   margin-left: 5vh;
+}
+
+#bad_button:active {
+  box-shadow: 0px 0px 10px rgba(201, 46, 70, 0.75);
 }
