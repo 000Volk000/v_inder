@@ -1,8 +1,15 @@
 /* App-wide styling */
 body {
-  background-color: #b7b7ea;
-  color: #2c2541;
-  font-family: "Momo Trust Display", Geneva, Verdana, sans-serif;
+  background: #2f3452;
+  background: linear-gradient(
+    0deg,
+    rgba(47, 52, 82, 1) 0%,
+    rgba(28, 30, 46, 1) 20%,
+    rgba(28, 30, 46, 1) 80%,
+    rgba(47, 52, 82, 1) 100%
+  );
+  color: #b1c2df;
+  font-family: "Space Grotesk Bold";
   height: 100vh;
   min-height: 100vh;
   width: 100%;
@@ -13,17 +20,16 @@ body {
 }
 
 #title_div {
-  background-color: #a09adf;
   width: 100%;
+  height: 14vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2vh;
-  border-bottom: 2px solid #7c67c4;
 }
 
 #title {
-  font-size: 2.5em;
+  font-size: 4em;
+  text-shadow: 0px 0px 20px rgba(229, 233, 244, 0.3);
 }
 
 #image {
@@ -33,12 +39,13 @@ body {
 }
 
 #central_image {
-  max-height: 70vh;
+  max-height: 68vh;
   max-width: 90%;
   height: auto;
   width: auto;
   display: block;
-  border-radius: 8vh 3vh;
+  border-radius: 4vh;
+  box-shadow: 0px 0px 10px rgba(229, 233, 244, 0.15);
 }
 
 #buttons {
@@ -53,16 +60,20 @@ body {
 #buttons button {
   width: 30vh;
   height: 5vh;
-  border-radius: 3vh 8vh;
-  margin: 0 1vh;
-  font-family: "Lilita One", Geneva, Verdana, sans-serif;
+  border-radius: 4vh;
+  font-family: "Space Mono Regular";
   font-size: 1.5em;
+  box-shadow: 0px 0px 15px rgba(229, 233, 244, 0.25);
 }
 
 #good_button {
   background-color: #a09adf;
+  margin-right: 5vh;
+  margin-left: 1vh;
 }
 
 #bad_button {
   background-color: #d2d3f3;
+  margin-right: 1vh;
+  margin-left: 5vh;
 }

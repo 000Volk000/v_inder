@@ -1,8 +1,8 @@
 use dioxus::prelude::*;
 
 static CSS: Asset = asset!("/assets/main.css");
-static MOMO_FONT: Asset = asset!("/assets/MomoTrustDisplay-Regular.ttf");
-static LILITA_FONT: Asset = asset!("/assets/LilitaOne-Regular.ttf");
+static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
+static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
 
 fn main() {
     dioxus::launch(App);
@@ -42,16 +42,16 @@ fn FontFace(family: &'static str, style: &'static str, weight: usize, asset: Ass
 fn LoadFonts() -> Element {
     rsx! {
         FontFace {
-            family: "Momo Trust Display",
+            family: "Space Grotesk Bold",
             style: "normal",
-            weight: 400,
-            asset: MOMO_FONT
+            weight: 700,
+            asset: SPACE_GROTESK_BOLD_FONT
         }
         FontFace {
-            family: "Lilita One",
+            family: "Space Mono Regular",
             style: "normal",
             weight: 400,
-            asset: LILITA_FONT
+            asset: SPACE_MONO_REGULAR_FONT
         }
     }
 }
