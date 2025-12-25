@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 
 static CSS: Asset = asset!("/assets/main.css");
+static STARS_BACKGROUND: Asset = asset!("/assets/stars_background.svg");
 static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
 static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
 
@@ -12,6 +13,9 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Stylesheet { href: CSS }
+        document::Style {
+            "body {{ --bg-stars: url('{STARS_BACKGROUND}'); }}"
+        }
         LoadFonts {  }
 
         Header {  }

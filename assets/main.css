@@ -1,13 +1,16 @@
 /* App-wide styling */
 body {
-  background: #2f3452;
-  background: linear-gradient(
-    0deg,
-    rgba(47, 52, 82, 1) 0%,
-    rgba(28, 30, 46, 1) 20%,
-    rgba(28, 30, 46, 1) 80%,
-    rgba(47, 52, 82, 1) 100%
-  );
+  background-color: #2f3452;
+  background-image:
+    var(--bg-stars),
+    linear-gradient(
+      0deg,
+      rgba(47, 52, 82, 1) 0%,
+      rgba(28, 30, 46, 1) 20%,
+      rgba(28, 30, 46, 1) 80%,
+      rgba(47, 52, 82, 1) 100%
+    );
+  background-size: auto 100vh;
   color: #b1c2df;
   font-family: "Space Grotesk Bold";
   height: 100vh;
