@@ -1,12 +1,16 @@
 use dioxus::prelude::*;
+use rand::Rng;
 
 static CSS: Asset = asset!("/assets/main.css");
 static STARS_BACKGROUND: Asset = asset!("/assets/stars_background.svg");
 static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
 static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
+static TEMPLATES: Asset = asset!("/assets/templates");
+static TEMPLATES_NUM: u8 = 10;
 
-fn next_img(mut img: Signal<&'static str>) {
-    img.set("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fus-tuna-sounds-images.voicemod.net%2F0345c3d7-a1d8-49bd-8b5a-afe34a4d50b5-1702126603651.jpg");
+fn next_img(mut img: Signal<String>) {
+    let rng = rand::rng().random::<u8>() % TEMPLATES_NUM;
+    img.set(format!("{TEMPLATES}/{rng}.jpg"));
 }
 
 fn main() {
@@ -76,9 +80,7 @@ fn Header() -> Element {
 
 #[component]
 fn NamesApp() -> Element {
-    let img_src = use_signal(|| {
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2024%2F08%2F16%2F11%2F47%2Fai-generated-8973514_1280.jpg"
-    });
+    let img_src = use_signal(|| format!("{TEMPLATES}/0.jpg"));
 
     let good = move |_| {
         next_img(img_src);
