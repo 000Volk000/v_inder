@@ -5,6 +5,10 @@ static STARS_BACKGROUND: Asset = asset!("/assets/stars_background.svg");
 static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
 static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
 
+fn next_img(mut img: Signal<&'static str>) {
+    img.set("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fus-tuna-sounds-images.voicemod.net%2F0345c3d7-a1d8-49bd-8b5a-afe34a4d50b5-1702126603651.jpg");
+}
+
 fn main() {
     dioxus::launch(App);
 }
@@ -20,7 +24,6 @@ fn App() -> Element {
 
         Header {  }
         NamesApp {  }
-        Buttons {  }
     }
 }
 
@@ -73,24 +76,29 @@ fn Header() -> Element {
 
 #[component]
 fn NamesApp() -> Element {
+    let img_src = use_signal(|| {
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2024%2F08%2F16%2F11%2F47%2Fai-generated-8973514_1280.jpg"
+    });
+
+    let good = move |_| {
+        next_img(img_src);
+    };
+    let bad = move |_| {
+        next_img(img_src);
+    };
+
     rsx! {
         div { id: "image",
             img { id: "central_image",
-                src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2024%2F08%2F16%2F11%2F47%2Fai-generated-8973514_1280.jpg",
+                src: "{img_src}",
             }
         }
 
-    }
-}
-
-#[component]
-fn Buttons() -> Element {
-    rsx! {
         div { id: "buttons",
-            button { id: "bad_button",
+            button { onclick: bad, id: "bad_button",
                 "Bad!"
             }
-            button { id:"good_button",
+            button { onclick: good, id:"good_button",
                 "Good!"
             }
         }
