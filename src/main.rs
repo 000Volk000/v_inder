@@ -1,17 +1,11 @@
 use dioxus::prelude::*;
-use rand::Rng;
 
 static CSS: Asset = asset!("/assets/main.css");
 static STARS_BACKGROUND: Asset = asset!("/assets/stars_background.svg");
 static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
 static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
-static TEMPLATES: Asset = asset!("/assets/templates");
-static TEMPLATES_NUM: u8 = 10;
 
-fn next_img(mut img: Signal<String>) {
-    let rng = rand::rng().random::<u8>() % TEMPLATES_NUM;
-    img.set(format!("{TEMPLATES}/{rng}.jpg"));
-}
+mod match_class;
 
 fn main() {
     dioxus::launch(App);
@@ -80,20 +74,21 @@ fn Header() -> Element {
 
 #[component]
 fn NamesApp() -> Element {
-    let img_src = use_signal(|| format!("{TEMPLATES}/0.jpg"));
+    let mut match_component = match_class::Match::new();
 
     let good = move |_| {
-        next_img(img_src);
+        match_component.next();
     };
     let bad = move |_| {
-        next_img(img_src);
+        match_component.next();
     };
 
     rsx! {
         div { id: "image",
             img { id: "central_image",
-                src: "{img_src}",
+                src: "{match_component.get_img()}",
             }
+            p { id: "central_name", "{match_component.get_name()}" }
         }
 
         div { id: "buttons",
