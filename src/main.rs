@@ -84,7 +84,7 @@ fn NamesApp() -> Element {
     };
 
     rsx! {
-        div { id: "image",
+        div { id: "match",
             img { id: "central_image",
                 src: "{match_component.get_img()}",
             }

@@ -35,7 +35,7 @@ body {
   text-shadow: 0px 0px 20px rgba(229, 233, 244, 0.3);
 }
 
-#image {
+#match {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,6 +49,18 @@ body {
   display: block;
   border-radius: 4vh;
   box-shadow: 0px 0px 10px rgba(229, 233, 244, 0.15);
+}
+
+#central_name {
+  font-size: 3em;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow:
+    0 0 30px #2f3452,
+    0 0 30px #000,
+    0 0 30px #000;
 }
 
 #buttons {
