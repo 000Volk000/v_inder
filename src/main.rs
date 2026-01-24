@@ -1,13 +1,17 @@
 use dioxus::prelude::*;
+use gloo_storage::{LocalStorage, Storage};
 
 static CSS: Asset = asset!("/assets/main.css");
 static STARS_BACKGROUND: Asset = asset!("/assets/stars_background.svg");
 static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
 static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
 
-mod match_class;
+mod guide_router;
 
 fn main() {
+    // REMEMBER TO ERASE THIS
+    LocalStorage::clear();
+    //
     dioxus::launch(App);
 }
 
@@ -20,8 +24,7 @@ fn App() -> Element {
         }
         LoadFonts {  }
 
-        Header {  }
-        NamesApp {  }
+        Router::<guide_router::Route> {}
     }
 }
 
@@ -57,47 +60,6 @@ fn LoadFonts() -> Element {
             style: "normal",
             weight: 400,
             asset: SPACE_MONO_REGULAR_FONT
-        }
-    }
-}
-
-#[component]
-fn Header() -> Element {
-    rsx! {
-        div { id: "title_div",
-            h1 { id: "title",
-                "V_inder"
-            }
-        }
-    }
-}
-
-#[component]
-fn NamesApp() -> Element {
-    let mut match_component = match_class::Match::new();
-
-    let good = move |_| {
-        match_component.next();
-    };
-    let bad = move |_| {
-        match_component.next();
-    };
-
-    rsx! {
-        div { id: "match",
-            img { id: "central_image",
-                src: "{match_component.get_img()}",
-            }
-            p { id: "central_name", "{match_component.get_name()}" }
-        }
-
-        div { id: "buttons",
-            button { onclick: bad, id: "bad_button",
-                "Bad!"
-            }
-            button { onclick: good, id:"good_button",
-                "Good!"
-            }
         }
     }
 }
