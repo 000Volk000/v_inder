@@ -14,7 +14,7 @@ pub struct Match {
 impl Match {
     pub fn new() -> Self {
         Self {
-            img: use_signal(Self::random_img_path),
+            img: use_signal(Self::random_img),
             name: use_signal(generate_valid_name),
         }
     }
@@ -28,12 +28,21 @@ impl Match {
     }
 
     pub fn next(&mut self) {
-        self.img.set(Self::random_img_path());
+        self.img.set(self.random_img_path());
         self.name.set(generate_valid_name());
     }
 
-    fn random_img_path() -> String {
+    fn random_img() -> String {
         let rng = rand::rng().random::<u8>() % TEMPLATES_NUM;
+        format!("{TEMPLATES}/{rng}.jpg")
+    }
+
+    fn random_img_path(&self) -> String {
+        let mut rng = rand::rng().random::<u8>() % TEMPLATES_NUM;
+        if *self.img.read() == format!("{TEMPLATES}/{rng}.jpg") {
+            rng = (rng + 1) % TEMPLATES_NUM;
+        }
+
         format!("{TEMPLATES}/{rng}.jpg")
     }
 }
