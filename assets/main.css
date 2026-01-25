@@ -118,3 +118,10 @@ body {
   list-style-type: none;
   padding: 0.1em;
 }
+
+.icon {
+  min-width: 2.5em;
+  width: fit-content;
+  color: inherit;
+  margin: 2em;
+}
