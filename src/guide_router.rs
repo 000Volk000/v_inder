@@ -1,3 +1,4 @@
+mod common;
 mod list_view;
 pub mod match_class;
 mod match_view;
@@ -14,10 +15,16 @@ pub enum Route {
 
 #[component]
 fn MatchView() -> Element {
-    match_view::match_view()
+    rsx! {
+        common::header {  }
+        match_view::match_view {  }
+    }
 }
 
 #[component]
 fn ListView() -> Element {
-    list_view::list_view()
+    rsx! {
+        common::header {  }
+        list_view::list_view {  }
+    }
 }

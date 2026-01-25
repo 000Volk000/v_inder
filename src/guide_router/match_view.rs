@@ -5,25 +5,6 @@ use super::match_class;
 
 #[component]
 pub fn match_view() -> Element {
-    rsx! {
-         Header {  }
-         NamesApp {  }
-    }
-}
-
-#[component]
-fn Header() -> Element {
-    rsx! {
-        div { id: "title_div",
-            h1 { id: "title",
-                "V_inder"
-            }
-        }
-    }
-}
-
-#[component]
-fn NamesApp() -> Element {
     let mut match_component = match_class::Match::new();
 
     let good = move |_| {
