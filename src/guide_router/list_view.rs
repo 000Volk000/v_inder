@@ -1,10 +1,9 @@
+use crate::storage;
 use dioxus::prelude::*;
-use gloo_storage::{LocalStorage, Storage};
-use std::collections::HashMap;
 
 #[component]
 pub fn list_view() -> Element {
-    let storage = LocalStorage::get_all::<HashMap<String, String>>().unwrap_or_default();
+    let storage = storage::get_content();
 
     rsx! {
         div { id: "names_container",

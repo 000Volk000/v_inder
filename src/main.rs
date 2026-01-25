@@ -6,6 +6,7 @@ static SPACE_GROTESK_BOLD_FONT: Asset = asset!("/assets/SpaceGrotesk-Bold.ttf");
 static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
 
 mod guide_router;
+mod storage;
 
 fn main() {
     dioxus::launch(App);

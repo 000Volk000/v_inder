@@ -1,19 +1,17 @@
 use dioxus::prelude::*;
-use gloo_storage::{LocalStorage, Storage};
 
 use super::match_class;
+use crate::storage;
 
 #[component]
 pub fn match_view() -> Element {
     let mut match_component = match_class::Match::new();
 
     let good = move |_| {
-        LocalStorage::set(
-            LocalStorage::length().to_string(),
-            &*match_component.get_name().read(),
-        )
-        .unwrap();
-        // {LocalStorage::get::<String>(\"name\").unwrap()}
+        storage::set(
+            storage::length().to_string(),
+            match_component.get_name().read().clone(),
+        );
         match_component.next();
     };
     let bad = move |_| {
