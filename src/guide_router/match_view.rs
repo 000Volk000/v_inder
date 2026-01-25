@@ -9,7 +9,7 @@ pub fn match_view() -> Element {
 
     let good = move |_| {
         storage::set(
-            storage::length().to_string(),
+            storage::get_content().len().to_string(),
             match_component.get_name().read().clone(),
         );
         match_component.next();
