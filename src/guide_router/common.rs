@@ -1,10 +1,11 @@
+use super::Route;
 use dioxus::prelude::*;
 
 #[component]
 pub fn header() -> Element {
     rsx! {
         div { id: "title_div",
-            a { class:"icon", href: "/",
+            Link { class:"icon", to: Route::MatchView,
                 svg { xmlns:"http://www.w3.org/2000/svg", fill:"none", view_box:"0 0 24 24", stroke_width:"1.5", stroke:"currentColor",
                     path {
                         stroke_linecap:"round",
@@ -16,7 +17,7 @@ pub fn header() -> Element {
             h1 { id: "title",
                 "V_inder"
             }
-            a { class:"icon", href: "/list",
+            Link { class:"icon", to: Route::ListView,
                 svg { xmlns:"http://www.w3.org/2000/svg", fill:"none", view_box:"0 0 24 24", stroke_width:"1.5", stroke:"currentColor",
                     path {
                         stroke_linecap:"round",
