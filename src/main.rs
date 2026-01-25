@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use gloo_storage::{LocalStorage, Storage};
 
 static CSS: Asset = asset!("/assets/main.css");
 static STARS_BACKGROUND: Asset = asset!("/assets/stars_background.svg");
@@ -9,9 +8,6 @@ static SPACE_MONO_REGULAR_FONT: Asset = asset!("/assets/SpaceMono-Regular.ttf");
 mod guide_router;
 
 fn main() {
-    // REMEMBER TO ERASE THIS
-    LocalStorage::clear();
-    //
     dioxus::launch(App);
 }
 

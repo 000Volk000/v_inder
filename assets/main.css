@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
   width: 100%;
   margin: 0;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -108,4 +107,14 @@ body {
 
 #bad_button:active {
   box-shadow: 0px 0px 10px rgba(201, 46, 70, 0.75);
+}
+
+#names_container {
+  text-align: center;
+}
+
+.name_element {
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 0.1em;
 }
