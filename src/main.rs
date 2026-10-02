@@ -35,7 +35,7 @@ fn FontFace(family: &'static str, style: &'static str, weight: usize, asset: Ass
                     font-family: '{}';
                     font-style: {};
                     font-weight: {};
-                    src: url('{}') format('woff2');
+                    src: url('{}') format('truetype');
                 }}
                 ", family, style, weight, asset
             )

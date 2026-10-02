@@ -9,14 +9,10 @@ edition = "2024"
 [dependencies]
 dioxus = { version = "0.7.1", features = ["router"] }
 getrandom = { version = "0.3.4", features = ["wasm_js"] }
-gloo-storage = "0.3.0"
 rand = "0.9.2"
-serde = "1.0.228"
-serde-jsonlines = "0.7.0"
 v_name_generator = "1.2.0"
 
 [features]
-default = ["desktop"]
+default = ["web"]
 web = ["dioxus/web"]
-desktop = ["dioxus/desktop"]
 mobile = ["dioxus/mobile"]

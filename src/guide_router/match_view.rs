@@ -8,10 +8,7 @@ pub fn match_view() -> Element {
     let mut match_component = match_class::Match::new();
 
     let good = move |_| {
-        storage::set(
-            storage::get_content().len().to_string(),
-            match_component.get_name().read().clone(),
-        );
+        storage::add(match_component.get_name().read().clone());
         match_component.next();
     };
     let bad = move |_| {

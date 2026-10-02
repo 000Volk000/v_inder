@@ -3,14 +3,19 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn list_view() -> Element {
-    let storage = storage::get_content();
+    let names = use_resource(storage::load);
 
     rsx! {
         div { id: "names_container",
-            ul {
-                for i in 0..storage.len() {
-                    li { class: "name_element", "{storage.get(&i.to_string()).unwrap()}" }
-                }
+            match &*names.read() {
+                Some(list) => rsx! {
+                    ul {
+                        for name in list.iter() {
+                            li { class: "name_element", "{name}" }
+                        }
+                    }
+                },
+                None => rsx! { p { "Cargando..." } },
             }
         }
     }
